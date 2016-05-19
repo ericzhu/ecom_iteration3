@@ -47,6 +47,7 @@ public class DataConfiguration {
       factory.setJpaVendorAdapter(jpaVendorAdapter);
       factory.setJpaProperties(jpaProperties);
       factory.setPackagesToScan("com.ecomlogix.ecom.domain");
+      factory.afterPropertiesSet();
       return factory;
    }
 
@@ -56,5 +57,4 @@ public class DataConfiguration {
       txManager.setEntityManagerFactory(localContainerEntityManagerFactoryBean().getObject());
       return txManager;
    }
-
 }
