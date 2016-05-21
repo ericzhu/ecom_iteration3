@@ -2,38 +2,27 @@ package com.ecomlogix.ecom.domain;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
 import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Table;
 
+import com.ecomlogix.ecom.domain.jpa.DomainEntity;
+
 @Entity
 @Table(name = "CATEGORY")
-public class Category {
+public class Category extends DomainEntity {
 
-   @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private Long       id;
+   private static final long serialVersionUID = 1L;
 
    @Column(name = "name", length = 200)
-   private String     name;
+   private String            name;
 
    @Column(name = "description", length = 2000)
-   private String     description;
+   private String            description;
 
    @ManyToOne
-   @JoinColumn(name="department_id")
-   private Department department;
-
-   public Long getId() {
-      return id;
-   }
-
-   public void setId(Long id) {
-      this.id = id;
-   }
+   @JoinColumn(name = "parent_id")
+   private Category          parent;
 
    public String getName() {
       return name;
@@ -51,11 +40,11 @@ public class Category {
       this.description = description;
    }
 
-   public Department getDepartment() {
-      return department;
+   public Category getParent() {
+      return parent;
    }
 
-   public void setDepartment(Department department) {
-      this.department = department;
+   public void setParent(Category parent) {
+      this.parent = parent;
    }
 }

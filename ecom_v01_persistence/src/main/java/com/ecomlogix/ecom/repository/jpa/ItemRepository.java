@@ -1,12 +1,11 @@
 package com.ecomlogix.ecom.repository.jpa;
 
-import java.util.List;
+import org.springframework.stereotype.Repository;
 
 import com.ecomlogix.ecom.domain.Item;
+import com.ecomlogix.ecom.repository.IItemRepository;
 
-public interface ItemRepository {
+@Repository
+public class ItemRepository extends GenericBaseRepository<Long, Item> implements IItemRepository {
    
-   public List<Item> findAll();
-
-   public void save(Item item);
 }

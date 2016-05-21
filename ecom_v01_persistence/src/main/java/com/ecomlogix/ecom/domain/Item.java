@@ -1,24 +1,23 @@
 package com.ecomlogix.ecom.domain;
 
-import java.io.Serializable;
 import java.math.BigDecimal;
+import java.util.HashSet;
+import java.util.Set;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.ManyToMany;
 import javax.persistence.Table;
+
+import com.ecomlogix.ecom.domain.jpa.DomainEntity;
 
 @Entity
 @Table(name = "ITEM")
-public class Item implements Serializable {
+public class Item extends DomainEntity {
 
    private static final long serialVersionUID = 1L;
-
-   @Id
-   @GeneratedValue(strategy = GenerationType.IDENTITY)
-   private Long              id;
 
    @Column(name = "name", length = 200)
    private String            name;
@@ -44,13 +43,9 @@ public class Item implements Serializable {
    @Column(name = "display")
    private Boolean           display          = Boolean.TRUE;
 
-   public Long getId() {
-      return id;
-   }
-
-   public void setId(Long id) {
-      this.id = id;
-   }
+   @ManyToMany
+   @JoinTable(name = "item_category", joinColumns = @JoinColumn(name = "item_id", referencedColumnName = "id") , inverseJoinColumns = @JoinColumn(name = "category_id", referencedColumnName = "id") )
+   private Set<Category>     categories       = new HashSet<>();
 
    public String getName() {
       return name;
@@ -116,10 +111,18 @@ public class Item implements Serializable {
       this.display = display;
    }
 
+   public Set<Category> getCategories() {
+      return categories;
+   }
+
+   public void setCategories(Set<Category> categories) {
+      this.categories = categories;
+   }
+
    @Override
    public String toString() {
       return "Item [id="
-         + id
+         + getId()
          + ", name="
          + name
          + ", description="

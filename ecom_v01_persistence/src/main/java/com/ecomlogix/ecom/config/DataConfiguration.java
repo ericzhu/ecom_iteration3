@@ -35,11 +35,11 @@ public class DataConfiguration {
    public LocalContainerEntityManagerFactoryBean localContainerEntityManagerFactoryBean() {
       HibernateJpaVendorAdapter jpaVendorAdapter = new HibernateJpaVendorAdapter();
       jpaVendorAdapter.setDatabasePlatform("org.hibernate.dialect.MySQL5InnoDBDialect");
-      jpaVendorAdapter.setGenerateDdl(true);
+      jpaVendorAdapter.setGenerateDdl(false);
 
       Properties jpaProperties = new Properties();
-      jpaProperties.put("hibernate.hbm2ddl.auto", "create");
-      jpaProperties.put("hibernate.hbm2ddl.import_files", "init.sql");
+      // jpaProperties.put("hibernate.hbm2ddl.auto", "create");
+      // jpaProperties.put("hibernate.hbm2ddl.import_files", "init.sql");
 
       LocalContainerEntityManagerFactoryBean factory = new LocalContainerEntityManagerFactoryBean();
       factory.setPersistenceUnitName(PERSISTENCE_UNIT_NAME);
