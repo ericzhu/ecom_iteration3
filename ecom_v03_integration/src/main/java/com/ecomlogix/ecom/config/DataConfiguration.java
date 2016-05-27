@@ -57,7 +57,7 @@ public class DataConfiguration {
 
    private Properties jpaProperties() {
       Properties jpaProperties = new Properties();
-      jpaProperties.put("hibernate.hbm2ddl.auto", "create");
+      jpaProperties.put("hibernate.hbm2ddl.auto", "create-drop");
       jpaProperties.put("hibernate.hbm2ddl.import_files", "init.sql");
       return jpaProperties;
    }

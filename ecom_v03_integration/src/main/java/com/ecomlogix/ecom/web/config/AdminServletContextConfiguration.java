@@ -22,7 +22,7 @@ public class AdminServletContextConfiguration extends WebMvcConfigurerAdapter {
    public InternalResourceViewResolver resourceResolver() {
       InternalResourceViewResolver viewResolver = new InternalResourceViewResolver();
       viewResolver.setViewClass(JstlView.class);
-      viewResolver.setPrefix("/WEB-INF/views/");
+      viewResolver.setPrefix("/WEB-INF/views/admin/");
       viewResolver.setSuffix(".jsp");
       return viewResolver;
    }
