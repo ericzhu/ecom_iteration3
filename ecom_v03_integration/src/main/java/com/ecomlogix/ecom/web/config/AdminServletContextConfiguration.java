@@ -1,4 +1,4 @@
-package com.ecomlogix.ecom.config;
+package com.ecomlogix.ecom.web.config;
 
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.ComponentScan;
@@ -13,10 +13,9 @@ import org.springframework.web.servlet.view.JstlView;
 
 @Configuration
 @EnableWebMvc
-@ComponentScan(basePackages = "com.ecomlogix.ecom.web", useDefaultFilters = false, includeFilters = { @ComponentScan.Filter(Controller.class),
+@ComponentScan(basePackages = "com.ecomlogix.ecom.web.admin", useDefaultFilters = false, includeFilters = { @ComponentScan.Filter(Controller.class),
    @ComponentScan.Filter(ControllerAdvice.class) })
-public class ServletContextConfiguration extends WebMvcConfigurerAdapter {
-
+public class AdminServletContextConfiguration extends WebMvcConfigurerAdapter {
    private static final Integer STATIC_RESOURCE_CACHE_PERIOD = 36000;
 
    @Bean
@@ -32,5 +31,4 @@ public class ServletContextConfiguration extends WebMvcConfigurerAdapter {
    public void addResourceHandlers(ResourceHandlerRegistry registry) {
       registry.addResourceHandler("/resources/**").addResourceLocations("/resources/").setCachePeriod(STATIC_RESOURCE_CACHE_PERIOD);
    }
-
 }
