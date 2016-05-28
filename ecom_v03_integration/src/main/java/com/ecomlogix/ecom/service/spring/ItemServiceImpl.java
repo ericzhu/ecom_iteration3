@@ -1,5 +1,7 @@
 package com.ecomlogix.ecom.service.spring;
 
+import java.util.List;
+
 import javax.inject.Inject;
 
 import org.springframework.stereotype.Service;
@@ -9,11 +11,11 @@ import com.ecomlogix.ecom.domain.Category;
 import com.ecomlogix.ecom.domain.Item;
 import com.ecomlogix.ecom.repository.ICategoryRepository;
 import com.ecomlogix.ecom.repository.IItemRepository;
-import com.ecomlogix.ecom.service.IItemService;
+import com.ecomlogix.ecom.service.ItemService;
 
 @Service
 @Transactional
-public class ItemService implements IItemService {
+public class ItemServiceImpl implements ItemService {
 
    @Inject
    private IItemRepository     itemRepository;
@@ -29,6 +31,11 @@ public class ItemService implements IItemService {
    @Override
    public Category getCategory(Long id) {
       return categoryRepository.get(id);
+   }
+
+   @Override
+   public List<Item> findAllItems() {
+      return itemRepository.getAll();
    }
 
 }
