@@ -1,0 +1,17 @@
+#comments {
+	margin-top: 50px;
+}
+
+h4 {
+	margin-bottom: 0px;
+}
+
+form textarea {
+	height: 100px;
+	min-height: 100px;
+}
+
+.comment-num {
+	font-size: 16px;
+	color: #ccc;
+}
